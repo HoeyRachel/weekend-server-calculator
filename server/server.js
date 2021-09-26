@@ -1,8 +1,8 @@
 //requires
-let express = require( 'express' );
-let app = express();
+const express = require( 'express' );
+const app = express();
 //for posts to work
-let bodyParser = require( 'body-parser' );
+const bodyParser = require( 'body-parser' );
 
 app.use( express.static( 'server/public' ) );
 // NEEDED for POSTS to work
@@ -10,6 +10,8 @@ app.use( bodyParser.urlencoded( { extended: true }))
 
 // globals
 const port = 5000;
+let mathInput = [];
+
 
 // spin up server
 app.listen( port, ()=>{
@@ -17,3 +19,8 @@ app.listen( port, ()=>{
 })
 
 //routes
+
+app.get( '/mathInput', ( req, res )=>{
+    console.log( '/mathInput GET hit' );
+    res.send( mathInput );
+})
