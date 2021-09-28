@@ -3,6 +3,7 @@ $( document ).ready( onReady );
 function onReady(){
     console.log ('in onReady');
     getMathInput();
+    $('#submitButton').on('click', mathSender);
 }
 
 function getMathInput(){
@@ -26,4 +27,9 @@ $.ajax({
     alert( 'not calculating' );
     console.log( 'error:', err );
 })
+}
+
+function mathSender(){
+    console.log ('in MathSender');
+
 }
