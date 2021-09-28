@@ -1,5 +1,6 @@
 $( document ).ready( onReady );
 
+
 function onReady(){
     console.log ('in onReady');
     getMathInput();
@@ -14,13 +15,15 @@ $.ajax({
 }).then (function(response){
     console.log ('back from server successfully:', response);
     //target output element
-    let el = $( '#result');
+    
+    
+    let el2 = $( '#history');
     //empty
-    el.empty();
+    el2.empty();
     //loop through array
     for(i=0; i<response.length; i++) {
         //append to DOM
-        el.append (`<li> ${response[i].firstNumber} ${response[i].operator} ${response[i].secondNumber} ${response[i].equals} ${response[i].answer}`)
+        el2.append (`<li> ${response[i].firstNumber} ${response[i].operator} ${response[i].secondNumber} ${response[i].equals} ${response[i].answer}`)
     }
 }).catch( function( err ){
     // got an error
@@ -35,6 +38,8 @@ function mathSender(){
 let objectToSend = {
     firstNumber: $( '#firstNumberIn').val(),
     secondNumber: $( '#secondNumberIn').val(),
+  
+
 } 
  console.log ('sending:', objectToSend);
     //AJAX POST with the object
@@ -55,3 +60,4 @@ let objectToSend = {
         console.log( err );
     })
 }
+

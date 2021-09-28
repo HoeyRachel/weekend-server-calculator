@@ -2,16 +2,20 @@
 const express = require( 'express' );
 const app = express();
 //for posts to work
+const port = 5000;
 const bodyParser = require( 'body-parser' );
 // globals
-const port = 5000;
+
+
 let mathInput = [{
-    firstNumber: 9,
-    secondNumber: 1,
-    operator: " + ",
+    firstNumber: "",
+    secondNumber: "",
+    operator: "",
     equals: "=",
     answer: ""
 }];
+
+
 
 app.use( express.static( 'server/public' ) );
 // NEEDED for POSTS to work
@@ -27,6 +31,7 @@ app.listen( port, ()=>{
 
 //routes
 
+
 app.get( '/mathInput', ( req, res )=>{
     console.log( '/mathInput GET hit' );
     res.send( mathInput );
@@ -38,3 +43,5 @@ app.post( '/mathInput', ( req, res )=>{
     res.sendStatus( 200 ); // generic "OK", 201 = "CREATED"
     mathInput.push( req.body );
 })
+
+
