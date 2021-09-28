@@ -3,14 +3,21 @@ const express = require( 'express' );
 const app = express();
 //for posts to work
 const bodyParser = require( 'body-parser' );
+// globals
+const port = 5000;
+let mathInput = [{
+    firstNumber: 9,
+    secondNumber: 1,
+    operator: " + ",
+    equals: "=",
+    answer: ""
+}];
 
 app.use( express.static( 'server/public' ) );
 // NEEDED for POSTS to work
 app.use( bodyParser.urlencoded( { extended: true }))
 
-// globals
-const port = 5000;
-let mathInput = [];
+
 
 
 // spin up server
