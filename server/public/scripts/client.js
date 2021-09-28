@@ -31,5 +31,27 @@ $.ajax({
 
 function mathSender(){
     console.log ('in MathSender');
-
+//get user input and store in an object
+let objectToSend = {
+    firstNumber: $( '#firstNumberIn').val(),
+    secondNumber: $( '#secondNumberIn').val(),
+} 
+ console.log ('sending:', objectToSend);
+    //AJAX POST with the object
+    $.ajax({
+        method: 'POST',
+        url: '/mathInput',
+        data: objectToSend
+    })
+    .then(function(response){
+        console.log ('back from post:', response);
+        $( '#firstNumberIn').val('')
+        $( '#secondNumberIn').val('')
+        getMathInput();
+    })
+    .catch( function( err ){
+        // catch any errors
+        alert( 'error adding message' );
+        console.log( err );
+    })
 }

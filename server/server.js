@@ -31,3 +31,10 @@ app.get( '/mathInput', ( req, res )=>{
     console.log( '/mathInput GET hit' );
     res.send( mathInput );
 })
+
+
+app.post( '/mathInput', ( req, res )=>{
+    console.log( '/mathInput POST hit:', req.body );
+    res.sendStatus( 200 ); // generic "OK", 201 = "CREATED"
+    mathInput.push( req.body );
+})
